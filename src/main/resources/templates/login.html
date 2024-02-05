@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/loginStyles.css">
+</head>
+<body>
+<div id="content">
+  <form method="post">
+    <p>login: admin</p>
+    <p>pass: 123</p>
+
+    <input type="text" placeholder="login" th:field="*{userModel.login}">
+    <input type="password" placeholder="password" th:field="*{userModel.password}">
+    <input type="submit" value="Login">
+  </form>
+</div>
+</body>
+</html>
