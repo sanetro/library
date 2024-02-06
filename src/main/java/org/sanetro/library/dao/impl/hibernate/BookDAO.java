@@ -75,6 +75,24 @@ public class BookDAO implements IBookDAO {
     }
 
     @Override
+    public void create(Book book) {
+        Session session = this.sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.persist(book);
+            session.getTransaction().commit();
+            System.out.println("Zapisano");
+
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.out.println("Nie udało się dodać książki: " + e.getMessage());
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
     public List<Book> getByPattern(String pattern) {
         Session session = this.sessionFactory.openSession();
         Query<Book> query = session.createQuery(GET_BY_PATTERN, Book.class);

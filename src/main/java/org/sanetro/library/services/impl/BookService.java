@@ -18,4 +18,10 @@ public class BookService implements IBookService {
     public List<Book> getAll() {
         return this.bookDAO.getAll();
     }
+
+    @Override
+    public void create(Book book) {
+        this.bookDAO.create(book);
+    }
+
 }

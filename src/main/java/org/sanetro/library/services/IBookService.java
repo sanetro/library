@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface IBookService {
     List<Book> getAll();
+
+    void create(Book book);
 }
 
