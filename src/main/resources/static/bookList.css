@@ -1,0 +1,34 @@
+.books-table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 26px auto;
+    background: white;
+    border-radius: 10px;
+}
+
+.books-table th, .books-table td {
+    border: 1px solid #eaeaea;
+    padding: 8px;
+    text-align: left;
+}
+
+.books-table th {
+    background-color: #ffffff;
+    color: #2c4294;
+}
+
+.books-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.books-table tr:hover {
+    background-color: #e8f4f8;
+}
+
+.books-table th:first-child, .books-table td:first-child {
+    border-left: none;
+}
+
+.books-table th:last-child, .books-table td:last-child {
+    border-right: none;
+}

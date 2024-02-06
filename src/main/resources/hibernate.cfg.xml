@@ -14,9 +14,9 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-<!--        <mapping class="org.sanetro.app.library.model.Book"/>-->
+        <mapping class="org.sanetro.library.model.Book"/>
 <!--        <mapping class="org.sanetro.app.library.model.Order"/>-->
 <!--        <mapping class="org.sanetro.app.library.model.OrderPosition"/>-->
-            <mapping class="org.sanetro.library.model.User"/>
+        <mapping class="org.sanetro.library.model.User"/>
     </session-factory>
 </hibernate-configuration>

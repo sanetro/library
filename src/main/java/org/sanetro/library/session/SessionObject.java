@@ -9,9 +9,7 @@ import org.springframework.web.context.annotation.SessionScope;
 public class SessionObject {
     private User loggedUser;
 
-    public boolean isLogged() {
-        return loggedUser != null;
-    }
+    public boolean isLogged() { return loggedUser != null; }
 
     public User getLoggedUser() {
         return loggedUser;

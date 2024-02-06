@@ -74,26 +74,43 @@ a {
 
 .options-panel {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
     padding: 20px;
 }
 
 .option-button {
-    background-color: #2c4294;
+    background-color: #5a6abf;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
     font-size: 16px;
-    margin: 4px 2px;
     cursor: pointer;
-    width: 200px;
-    border-radius: 5px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.option-button:hover {
-    background-color: #425eb9;
+.option-button:hover, .option-button:focus {
+    background-color: #6b7ccf;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+@media screen and (max-width: 768px) {
+    .options-panel {
+        justify-content: space-around;
+    }
+
+    .context {
+        min-width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }

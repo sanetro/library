@@ -13,7 +13,6 @@ public class PanelController {
 
     @Resource
     SessionObject sessionObject;
-
     @Resource
     AuthenticationService authenticationService;
 
@@ -21,11 +20,5 @@ public class PanelController {
     public String panel(Model model) {
         model.addAttribute("isLogged", this.sessionObject.isLogged());
         return authenticationService.checkSessionBeforeRedirect("panel");
-    }
-
-    @RequestMapping(path = "/books", method = RequestMethod.GET)
-    public String books(Model model) {
-        model.addAttribute("isLogged", this.sessionObject.isLogged());
-        return authenticationService.checkSessionBeforeRedirect("books");
     }
 }
