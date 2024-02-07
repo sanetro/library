@@ -21,28 +21,28 @@ public class BooksController {
     SessionObject sessionObject;
 
     @Resource
-    AuthenticationService authenticationService;
+    private AuthenticationService authenticationService;
 
-    @Resource
-    BookService bookService;
+    @Autowired
+    IBookService bookService;
 
     @RequestMapping(path = {"/books/list", "/books"}, method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("books", this.bookService.getAll());
-        model.addAttribute("isLogged", this.sessionObject.isLogged());
-        return "books/list";
+        return this.authenticationService.checkSessionBeforeRedirect("books/list");
     }
 
     @RequestMapping(path = "/books/add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("bookModel", new Book());
-        model.addAttribute("isLogged", this.sessionObject.isLogged());
-        return "books/add";
+        return this.authenticationService.checkSessionBeforeRedirect("books/add");
     }
 
-    @RequestMapping(path = "/books/add", method = RequestMethod.POST)
+    @RequestMapping(path = "/books/add", method =  RequestMethod.POST)
     public String add(@ModelAttribute Book book) {
+        // for default: book is avaible
+        book.setStatus(1);
         this.bookService.create(book);
-        return "books/add";
+        return this.authenticationService.checkSessionBeforeRedirect("redirect:/books");
     }
 }

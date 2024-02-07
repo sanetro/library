@@ -13,26 +13,21 @@
         <div th:replace="~{schema.html :: options-panel}"></div>
         <table class="books-table">
             <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Price</th>
-                <th>ISBN</th>
-                <th>Quantity</th>
-                <th>Rent<br>Book</th>
-            </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                </tr>
             </thead>
             <tbody th:each="book : ${books}">
-            <tr>
-                <td th:text="${book.id}" class="title"/>
-                <td th:text="${book.title}" class="title"/>
-                <td th:text="${book.author}" class="author"/>
-                <td th:text="${book.price + ' PLN'}" class="price"/>
-                <td th:text="${book.isbn}" class="isbn"/>
-                <td th:text="${book.quantity}" class="quantity"/>
-                <td><a th:if="${isLogged}" th:href="@{/book/add/{id}(id=${book.id})}">➕</a></td>
-            </tr>
+                <tr>
+                    <td th:text="${book.id}" class="id"/>
+                    <td th:text="${book.title}" class="title"/>
+                    <td th:text="${book.author}" class="author"/>
+                    <td th:text="${book.isbn}" class="isbn"/>
+                    <td class="status"><a alt="Order book" th:if="${book.status == 1}" th:href="@{/book/add/{id}(id=${book.id})}">➕</a></td>
+                </tr>
             </tbody>
         </table>
     </div>

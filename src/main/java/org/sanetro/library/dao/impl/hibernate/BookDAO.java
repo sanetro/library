@@ -81,12 +81,9 @@ public class BookDAO implements IBookDAO {
             session.beginTransaction();
             session.persist(book);
             session.getTransaction().commit();
-            System.out.println("Zapisano");
 
         } catch (Exception e) {
             session.getTransaction().rollback();
-            System.out.println("Nie udało się dodać książki: " + e.getMessage());
-
         } finally {
             session.close();
         }

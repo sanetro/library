@@ -32,3 +32,7 @@
 .books-table th:last-child, .books-table td:last-child {
     border-right: none;
 }
+
+.status {
+    width: 22px;
+}

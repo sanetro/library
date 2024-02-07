@@ -20,8 +20,7 @@ public class Book {
     private String title;
     private String author;
     private String isbn;
-    private double price;
-    private int quantity;
+    private int status;
 
     public Book(int id) {
         this.id = id;
