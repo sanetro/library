@@ -19,7 +19,7 @@
       <a href="/books/list">Books</a>
     </li>
     <li>
-      <a href="/borrowed">Borrowed Books</a>
+      <a href="/borrowed/list">Borrowed Books</a>
     </li>
     <li>
       <a href="/overdue">Overdue borrower</a>
@@ -32,6 +32,12 @@
   <a href="/books/list" class="option-button">List of Books</a>
   <a href="/books/add" class="option-button">Add Book</a>
   <a href="/search-book" class="option-button">Search Book</a>
+</div>
+
+<div id="options-panel-borrowed" class="options-panel" th:fragment="options-panel-borrowed">
+  <a href="/borrowed/list" class="option-button">History</a>
+  <a href="/borrowed/overdue" class="option-button">Overdue Users</a>
+  <a href="/borrowed/actual" class="option-button">Actual borrowers</a>
 </div>
 
 </body>

@@ -26,7 +26,7 @@
                     <td th:text="${book.title}" class="title"/>
                     <td th:text="${book.author}" class="author"/>
                     <td th:text="${book.isbn}" class="isbn"/>
-                    <td class="status"><a alt="Order book" th:if="${book.status == 1}" th:href="@{/book/add/{id}(id=${book.id})}">➕</a></td>
+                    <td class="status"><a alt="Order book" th:if="${book.status == 1}" th:href="@{/books/confirm/{id}(id=${book.id})}">➕</a></td>
                 </tr>
             </tbody>
         </table>

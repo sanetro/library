@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/bookList.css">
+</head>
+<body>
+    <div th:replace="~{schema.html :: sidebar}"></div>
+    <div class="context">
+        <h1>Borrowed Books</h1>
+        <div th:replace="~{schema.html :: options-panel-borrowed}"></div>
+        <table class="books-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Book</th>
+                    <th>Begin Date</th>
+                    <th>Returned Date</th>
+                    <th>Deadline Date</th>
+                </tr>
+            </thead>
+            <tbody th:each="borrower : ${borrowers}">
+                <tr>
+                    <td th:text="${borrower.id}" class="user"/>
+                    <td th:text="${borrower.user.login}" class="user"/>
+                    <td th:text="${borrower.book.title}" class="book"/>
+                    <td th:text="${borrower.begin}" class="date"/>
+                    <td th:text="${borrower.returned}" class="date"/>
+                    <td th:text="${borrower.deadline}" class="date"/>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
