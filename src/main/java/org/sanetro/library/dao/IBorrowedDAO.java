@@ -5,7 +5,6 @@ import org.sanetro.library.model.Borrower;
 import org.sanetro.library.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IBorrowedDAO {
     List<Borrower> getAll();
@@ -14,4 +13,9 @@ public interface IBorrowedDAO {
     void create(Borrower borrower);
     List<Borrower> getByPattern(String pattern);
     void bookOrderProcess(User loggedUser, Book book);
+    List<Borrower> notReturnedBooksByUser(User user);
+
+    void bookReturnProcess(User loggedUser, Book book, Borrower borrower);
+
+    Borrower getBorrower(int borrowerId);
 }

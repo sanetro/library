@@ -5,7 +5,6 @@ import org.sanetro.library.model.Borrower;
 import org.sanetro.library.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public interface IBorrowedService {
@@ -13,6 +12,12 @@ public interface IBorrowedService {
 
     void create(Borrower borrower);
 
-    public void bookOrderProcess(User loggedUser, Book book);
+    void bookOrderProcess(User loggedUser, Book book);
+
+    List<Borrower> notReturnedBooksByUser(User user);
+
+    void bookReturnProcess(User loggedUser, Book book, Borrower borrower);
+
+    Borrower getBorrower(int borrowerId);
 }
 

@@ -30,4 +30,12 @@ public class BorrowedService implements IBorrowedService {
     @Override
     public void bookOrderProcess(User loggedUser, Book book) { this.borrowedDAO.bookOrderProcess(loggedUser, book); }
 
+    @Override
+    public List<Borrower> notReturnedBooksByUser(User user) { return this.borrowedDAO.notReturnedBooksByUser(user); }
+
+    @Override
+    public void bookReturnProcess(User loggedUser, Book book, Borrower borrower) { this.borrowedDAO.bookReturnProcess(loggedUser, book, borrower); }
+
+    @Override
+    public Borrower getBorrower(int borrowerId) { return this.borrowedDAO.getBorrower(borrowerId); }
 }

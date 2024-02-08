@@ -56,7 +56,7 @@ public class BooksController {
                 this.sessionObject.getLoggedUser(),
                 this.bookService.getBook(id)
         );
-        return this.authenticationService.checkSessionBeforeRedirect("redirect:/borrowed");
+        return this.authenticationService.checkSessionBeforeRedirect("redirect:/books");
     }
 
     @RequestMapping(path = "/books/add", method =  RequestMethod.POST)

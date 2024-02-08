@@ -14,8 +14,6 @@
         <table class="books-table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>User</th>
                     <th>Book</th>
                     <th>Begin Date</th>
                     <th>Returned Date</th>
@@ -24,12 +22,12 @@
             </thead>
             <tbody th:each="borrower : ${borrowers}">
                 <tr>
-                    <td th:text="${borrower.id}" class="user"/>
-                    <td th:text="${borrower.user.login}" class="user"/>
                     <td th:text="${borrower.book.title}" class="book"/>
                     <td th:text="${borrower.begin}" class="date"/>
                     <td th:text="${borrower.deadline}" class="date"/>
-                    <td th:text="${borrower.returned}" class="date"/>
+                    <td>
+                        <a th:href="@{/borrowed/owned/{bookId}/{borrowerId}(bookId=${borrower.book.id}, borrowerId=${borrower.id})}">Oddaj</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
