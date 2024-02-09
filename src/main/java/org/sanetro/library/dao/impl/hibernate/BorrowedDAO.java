@@ -15,8 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Repository
@@ -26,14 +28,41 @@ public class BorrowedDAO implements IBorrowedDAO {
     private final String GET_ALL = "FROM org.sanetro.library.model.Borrower";
     private final String GET_BY_PATTERN = "FROM org.sanetro.library.model.Borrower WHERE user.login like :pattern OR book.title like :pattern";
     private final String GET_BORROWED_BOOKS_BY_USER = "SELECT b FROM org.sanetro.library.model.Borrower b JOIN b.user u WHERE u.id = :id AND b.book.status = 0 AND b.returned IS NULL";
-
-
-
     @Autowired
     SessionFactory sessionFactory;
 
     @Autowired
     SessionObject sessionObject;
+
+    @Override
+    public List<Borrower> GetAllBooksWithStatusAndUser(List<Book> books, List<Book> allBooks) {
+        List<Borrower> result = new ArrayList<>();
+        List<Borrower> allBorrower = getAll();
+        Collections.sort(allBorrower, (borrower1, borrower2) -> borrower2.getBegin().compareTo(borrower1.getBegin()));
+        for (Book book: books) {
+            for (Borrower borrower: allBorrower) {
+                if (book.equals(borrower.getBook())) {
+                    result.add(borrower);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<Borrower> overdue() {
+         return getAll().stream()
+                 .filter(borrower -> borrower.getDeadline().isBefore(LocalDateTime.now()))
+                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Borrower> actualBorrowers() {
+        return getAll().stream()
+                .filter(borrower -> borrower.getReturned() == null)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public List<Borrower> notReturnedBooksByUser(User user) {

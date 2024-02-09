@@ -31,7 +31,7 @@ public class AuthenticationController {
     public String login(@ModelAttribute User user) {
         this.authenticationService.login(user.getLogin(), user.getPassword());
         if(this.sessionObject.isLogged()) {
-            return "redirect:/panel";
+            return "redirect:/books";
         }
         return "redirect:/";
     }

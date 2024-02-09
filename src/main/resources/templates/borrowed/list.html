@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Library</title>
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/bookList.css">
+    <link rel="stylesheet" href="/list.css">
 </head>
 <body>
     <div th:replace="~{schema.html :: sidebar}"></div>
@@ -18,14 +18,14 @@
                     <th>User</th>
                     <th>Book</th>
                     <th>Begin Date</th>
-                    <th>Returned Date</th>
                     <th>Deadline Date</th>
+                    <th>Returned Date</th>
                 </tr>
             </thead>
             <tbody th:each="borrower : ${borrowers}">
                 <tr>
                     <td th:text="${borrower.id}" class="user"/>
-                    <td th:text="${borrower.user.login}" class="user"/>
+                    <td th:text="${borrower.user.getName()} + ' ' + ${borrower.user.getSurname()}" class="user"/>
                     <td th:text="${borrower.book.title}" class="book"/>
                     <td th:text="${borrower.begin}" class="date"/>
                     <td th:text="${borrower.deadline}" class="date"/>

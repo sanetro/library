@@ -13,9 +13,16 @@ public interface IBorrowedDAO {
     void create(Borrower borrower);
     List<Borrower> getByPattern(String pattern);
     void bookOrderProcess(User loggedUser, Book book);
+
+    List<Borrower> actualBorrowers();
+
     List<Borrower> notReturnedBooksByUser(User user);
 
     void bookReturnProcess(User loggedUser, Book book, Borrower borrower);
 
     Borrower getBorrower(int borrowerId);
+
+    List<Borrower> GetAllBooksWithStatusAndUser(List<Book> books, List<Book> allBooks);
+
+    List<Borrower> overdue();
 }

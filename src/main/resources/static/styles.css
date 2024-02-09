@@ -29,6 +29,10 @@ a {
     background: #6d7fcc;
 }
 
+.sidebar-header h3 a {
+    color: white!important;
+}
+
 #sidebar ul.components {
     padding: 0;
     list-style: none;
@@ -123,6 +127,7 @@ h1 {
     text-align: center;
     padding: 32px;
     margin-top: 19px;
+    margin-left: -20px;
 }
 
 .form-container {
@@ -152,7 +157,7 @@ h1 {
     box-sizing: border-box;
 }
 
-.input-group button {
+.input-group button, .action-button {
     width: 100%;
     padding: 10px;
     border: none;
@@ -162,6 +167,10 @@ h1 {
     cursor: pointer;
 }
 
-.input-group button:hover {
+.action-button {
+    padding: 7px!important;
+}
+
+.input-group button:hover, .action-button:hover{
     background-color: #7d8fe7;
 }

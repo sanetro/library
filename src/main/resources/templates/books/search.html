@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/list.css">
+</head>
+<body>
+    <div th:replace="~{schema.html :: sidebar}"></div>
+    <div class="context">
+        <h1>Books</h1>
+        <div th:replace="~{schema.html :: options-panel}"></div>
+        <div class="form-container">
+            <h2>🔎 Search book by:</h2>
+            <form id="book-form" method="post">
+                <div class="input-group">
+                    <input type="text" id="title" name="pattern">
+                </div>
+                <div class="input-group">
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="context" style="margin-top: -300px;">
+        <table class="books-table" th:if="bookModel != null">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th> </th>
+            </tr>
+            </thead>
+            <tbody th:each="borrower : ${borrowers}">
+            <tr>
+                <td th:text="${borrower.book.id}" class="id"/>
+                <td th:text="${borrower.book.title}" class="title"/>
+                <td th:text="${borrower.book.author}" class="author"/>
+                <td th:text="${borrower.book.isbn}" class="isbn"/>
+                <td class="status">
+                    <a th:if="${borrower.book.status == 1}"
+                       th:href="@{/books/confirm/{id}(id=${borrower.book.id})}">
+                        🛒
+                    </a>
+                    <p th:if="${borrower.book.status == 0}"
+                       th:text="${borrower.getUser().getName()} +
+                       ' ' + ${borrower.getUser().getSurname()} +
+                       ' ' + ${borrower.getBegin()}"></p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

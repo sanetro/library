@@ -1,6 +1,7 @@
 package org.sanetro.library.controllers;
 
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.sanetro.library.model.Book;
 import org.sanetro.library.services.IBookService;
 import org.sanetro.library.services.IBorrowedService;
@@ -39,6 +40,22 @@ public class BooksController {
     public String add(Model model) {
         model.addAttribute("bookModel", new Book());
         return this.authenticationService.checkSessionBeforeRedirect("books/add");
+    }
+
+    @RequestMapping(path = "/books/search-book", method = {RequestMethod.GET, RequestMethod.POST})
+    public String search(Model model, @ModelAttribute("pattern") String pattern, HttpServletRequest request) {
+        if (request.getMethod().equalsIgnoreCase("GET")) {
+            model.addAttribute("pattern", "");
+        }
+        if (request.getMethod().equalsIgnoreCase("POST")) {
+            model.addAttribute("borrowers",
+                    this.borrowedService.GetAllBooksWithStatusAndUser(
+                            this.bookService.getByPattern(pattern),
+                            this.bookService.getAll()
+                    ));
+        }
+
+        return this.authenticationService.checkSessionBeforeRedirect("books/search");
     }
 
     @RequestMapping(path = "/books/confirm/{id}", method = RequestMethod.GET)

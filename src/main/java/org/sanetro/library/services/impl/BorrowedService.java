@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BorrowedService implements IBorrowedService {
@@ -38,4 +37,13 @@ public class BorrowedService implements IBorrowedService {
 
     @Override
     public Borrower getBorrower(int borrowerId) { return this.borrowedDAO.getBorrower(borrowerId); }
+
+    @Override
+    public List<Borrower> GetAllBooksWithStatusAndUser(List<Book> books, List<Book> allBooks) { return this.borrowedDAO.GetAllBooksWithStatusAndUser(books, allBooks); }
+
+    @Override
+    public List<Borrower> overdue() { return this.borrowedDAO.overdue(); }
+
+    @Override
+    public List<Borrower> actualBorrowers() { return this.borrowedDAO.actualBorrowers(); }
 }

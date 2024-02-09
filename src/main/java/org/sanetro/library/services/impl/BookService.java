@@ -33,4 +33,7 @@ public class BookService implements IBookService {
 
     @Override
     public void update(Book book) { this.bookDAO.update(book); }
+
+    @Override
+    public List<Book> getByPattern(String pattern) { return this.bookDAO.getByPattern(pattern); }
 }

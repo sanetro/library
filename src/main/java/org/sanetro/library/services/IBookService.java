@@ -16,5 +16,7 @@ public interface IBookService {
 
     void update(Book book);
 
+    List<Book> getByPattern(String pattern);
+
 }
 

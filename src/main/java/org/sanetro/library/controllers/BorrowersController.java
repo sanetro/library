@@ -34,6 +34,18 @@ public class BorrowersController {
         return this.authenticationService.checkSessionBeforeRedirect("borrowed/list");
     }
 
+    @RequestMapping(path = "/borrowed/overdue", method = RequestMethod.GET)
+    public String overdue(Model model) {
+        model.addAttribute("borrowers", this.borrowedService.overdue());
+        return this.authenticationService.checkSessionBeforeRedirect("borrowed/list");
+    }
+
+    @RequestMapping(path = "/borrowed/actual", method = RequestMethod.GET)
+    public String actual(Model model) {
+        model.addAttribute("borrowers", this.borrowedService.actualBorrowers());
+        return this.authenticationService.checkSessionBeforeRedirect("borrowed/list");
+    }
+
     @RequestMapping(path = {"/borrowed/owned"}, method = RequestMethod.GET)
     public String owned(Model model) {
         model.addAttribute("borrowers", this.borrowedService.notReturnedBooksByUser(

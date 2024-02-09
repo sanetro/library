@@ -19,5 +19,11 @@ public interface IBorrowedService {
     void bookReturnProcess(User loggedUser, Book book, Borrower borrower);
 
     Borrower getBorrower(int borrowerId);
+
+    List<Borrower> GetAllBooksWithStatusAndUser(List<Book> books, List<Book> allBooks);
+
+    List<Borrower>  overdue();
+
+    List<Borrower> actualBorrowers();
 }
 

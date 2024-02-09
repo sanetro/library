@@ -10,14 +10,13 @@ import org.springframework.stereotype.Repository;
 import org.sanetro.library.dao.IBookDAO;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class BookDAO implements IBookDAO {
 
     private final String GET_BY_ID = "FROM org.sanetro.library.model.Book WHERE id = :id";
     private final String GET_ALL = "FROM org.sanetro.library.model.Book";
-    private final String GET_BY_PATTERN = "FROM org.sanetro.library.model.Book WHERE author like :pattern OR title like :pattern";
+    private final String GET_BY_PATTERN = "FROM org.sanetro.library.model.Book WHERE author like :pattern OR title like :pattern OR isbn like :pattern";
 
     @Autowired
     SessionFactory sessionFactory;

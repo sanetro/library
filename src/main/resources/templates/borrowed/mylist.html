@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Library</title>
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/bookList.css">
+    <link rel="stylesheet" href="/list.css">
 </head>
 <body>
     <div th:replace="~{schema.html :: sidebar}"></div>
@@ -17,7 +17,7 @@
                     <th>Book</th>
                     <th>Begin Date</th>
                     <th>Returned Date</th>
-                    <th>Deadline Date</th>
+                    <th style="width: 10px"> </th>
                 </tr>
             </thead>
             <tbody th:each="borrower : ${borrowers}">
@@ -25,8 +25,8 @@
                     <td th:text="${borrower.book.title}" class="book"/>
                     <td th:text="${borrower.begin}" class="date"/>
                     <td th:text="${borrower.deadline}" class="date"/>
-                    <td>
-                        <a th:href="@{/borrowed/owned/{bookId}/{borrowerId}(bookId=${borrower.book.id}, borrowerId=${borrower.id})}">Oddaj</a>
+                    <td style="width: 10px">
+                        <a class="action-button" style="width: 10px" th:href="@{/borrowed/owned/{bookId}/{borrowerId}(bookId=${borrower.book.id}, borrowerId=${borrower.id})}">↩</a>
                     </td>
                 </tr>
             </tbody>
