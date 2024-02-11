@@ -60,9 +60,9 @@ public class BorrowersController {
         book.setStatus(1);
         this.bookService.update(book);
         this.borrowedService.bookReturnProcess(
-                this.sessionObject.getLoggedUser(),
-                this.bookService.getBook(bookId),
-                this.borrowedService.getBorrower(borrowerId)
+                this.sessionObject,
+                this.borrowedService.getBorrower(borrowerId),
+                this.sessionObject.getLoggedUser()
         );
         return this.authenticationService.checkSessionBeforeRedirect("redirect:/borrowed/owned");
     }

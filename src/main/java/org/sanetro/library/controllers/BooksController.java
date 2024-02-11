@@ -54,7 +54,6 @@ public class BooksController {
                             this.bookService.getAll()
                     ));
         }
-
         return this.authenticationService.checkSessionBeforeRedirect("books/search");
     }
 
