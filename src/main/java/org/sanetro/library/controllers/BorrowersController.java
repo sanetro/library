@@ -66,5 +66,4 @@ public class BorrowersController {
         );
         return this.authenticationService.checkSessionBeforeRedirect("redirect:/borrowed/owned");
     }
-
 }

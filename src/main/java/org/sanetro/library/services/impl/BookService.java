@@ -40,4 +40,20 @@ public class BookService implements IBookService {
     public List<Book> getByPattern(String pattern) {
         return this.bookDAO.getByPattern(pattern);
     }
+
+    @Override
+    public void init() {
+        String[] titles = {"Przygody w nieznanym", "Tajemnice kosmosu", "Odyseja czasu", "Zaginione królestwa", "Echo przeszłości"};
+        String[] authors = {"Jan Kowalski", "Ewa Nowak", "Adam Zielinski", "Ola Malinowska", "Marek Wisniewski"};
+        String[] isbns = {"123-4567-890A-1B", "234-5678-901C-2D", "345-6789-012E-3F", "456-7890-123G-4H", "567-8901-234I-5J"};
+
+        for (int i = 0; i < 5; i++) {
+            Book book = new Book();
+            book.setTitle(titles[i]);
+            book.setAuthor(authors[i]);
+            book.setIsbn(isbns[i]);
+            book.setStatus(1);
+            this.bookDAO.create(book);
+        }
+    }
 }

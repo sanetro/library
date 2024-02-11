@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface IUserDAO {
     Optional<User> getByLogin(String login);
     List<User> getAll();
-
+    void create(User user);
 }

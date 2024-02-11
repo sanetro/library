@@ -16,7 +16,6 @@
 
         <mapping class="org.sanetro.library.model.Book"/>
         <mapping class="org.sanetro.library.model.Borrower"/>
-<!--        <mapping class="org.sanetro.app.library.model.OrderPosition"/>-->
         <mapping class="org.sanetro.library.model.User"/>
     </session-factory>
 </hibernate-configuration>

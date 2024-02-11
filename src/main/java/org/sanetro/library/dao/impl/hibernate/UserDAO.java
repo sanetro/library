@@ -44,5 +44,20 @@ public class UserDAO implements IUserDAO {
         session.close();
         return result;
     }
+
+    @Override
+    public void create(User user) {
+        Session session = this.sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.persist(user);
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+    }
 }
 

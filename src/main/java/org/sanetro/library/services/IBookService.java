@@ -18,5 +18,6 @@ public interface IBookService {
 
     List<Book> getByPattern(String pattern);
 
+    void init();
 }
 
